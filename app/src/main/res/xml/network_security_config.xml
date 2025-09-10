@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<network-security-config>
-    <domain-config cleartextTrafficPermitted="true">
-    <!-- allow cleartext to local Pi IPs; add additional domains or use domain="" to allow all local addresses -->
-    <domain includeSubdomains="false">172.19.81.89</domain>
-    </domain-config>
-    <base-config cleartextTrafficPermitted="false" />
-</network-security-config>

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-	<!-- Tamil translations (minimal) - add more translations as needed -->
-	<string name="app_name">Mahakumbh CrowdSafety</string>
-	<string name="home_finding_lost">காணாமல் போனவர்களைத் தேடுதல்</string>
-</resources>
-
