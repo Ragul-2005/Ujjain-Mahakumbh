@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🚨 Crowd Safety - Emergency Management System
 
 A professional, modern mobile application for crowd monitoring and emergency management during large-scale events, festivals, and gatherings.
@@ -100,3 +101,7 @@ For support and questions, please open an issue on GitHub or contact [ragult.vls
 
 **Built with ❤️ for safer crowd management**
 "# crowd-safety-app-firebase" 
+=======
+# Ujjain-Mahakumbh
+The Crowd Safety App is a smart, real-time safety management solution designed for large-scale gatherings like Mahakumbh in Ujjain, where millions of devotees assemble in one place. Using Firebase as the backend, the app ensures fast, secure, and scalable communication between authorities, volunteers, and participants.
+>>>>>>> db31c75bc50d183d3fbcf76e3ae7f688fcba72ed
