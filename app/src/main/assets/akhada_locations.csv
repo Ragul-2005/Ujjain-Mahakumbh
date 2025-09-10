@@ -1,0 +1,9 @@
+# akhada_locations.csv
+# Format: name,lat,lng,category
+# Replace lat,lng with actual coordinates for each akhada. Category must be one of: akhara,temple,ghat,attraction,lost_found,parking,emergency,convenience
+
+Shri Panchayati Akhada Mahanirvani,25.419518,81.889800,akhara,a8e5m0
+Shri Shambhu Panchayati Atal Akhada,25.419900,81.889500,akhara,ufv6ue
+Shri Taponidhi Panchayati Shri Niranjani Akhada,25.419200,81.890200,akhara,li5ekk
+Shri Panchayati Anand Akhada,25.418800,81.889300,akhara,6abolg
+Shri Panchadashnam Juna Akhada,25.420100,81.889900,akhara,w7aok8

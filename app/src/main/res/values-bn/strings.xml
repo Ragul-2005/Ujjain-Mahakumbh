@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ক্রাউডসেফটি</string>
+    <string name="google_maps_key">AIzaSyCX5MIOqGWKsIDxaGfFdUHeXzVMfOfC8sQ</string>
+
+    <string name="light_mode">লাইট</string>
+    <string name="dark_mode">ডার্ক</string>
+    <string name="logout">লগআউট</string>
+    <string name="select_language">ভাষা নির্বাচন করুন</string>
+    <string name="lang_english">English</string>
+    <string name="lang_hindi">हिन्दी</string>
+    <string name="lang_bengali">বাংলা</string>
+    <string name="lang_telugu">తెలుగు</string>
+
+    <string name="title_home">হোম</string>
+    <string name="title_map">ম্যাপ</string>
+    <string name="title_alerts">অ্যালার্ট</string>
+    <string name="title_profile">প্রোফাইল</string>
+    <string name="title_dashboard">ড্যাশবোর্ড</string>
+    <string name="title_tasks">কাজ</string>
+    <string name="title_crowd_map">জনসমুদ্র মানচিত্র</string>
+    <string name="title_checkin">চেক-ইন</string>
+    <string name="title_volunteer_portal">স্বেচ্ছাসেবক পোর্টাল</string>
+    <string name="lang_english_label">English (English)</string>
+    <string name="lang_hindi_label">हिन्दी (Hindi)</string>
+    <string name="lang_bengali_label">বাংলা (Bengali)</string>
+    <string name="lang_telugu_label">తెలుగు (Telugu)</string>
+
+    <string name="home_finding_lost">হারিয়ে যাওয়া ব্যক্তিদের সন্ধান</string>
+    <string name="home_report_missing">একটি নিখোঁজ ব্যক্তির রিপোর্ট করুন বা সক্রিয় কেসগুলি দেখুন।</string>
+    <string name="home_online_donation">অনলাইন দান</string>
+    <string name="home_density_map">ঘনত্ব মানচিত্র</string>
+    <string name="home_priority_reservation">অগ্রাধিকার সংরক্ষণ</string>
+    <string name="home_priority_desc">গর্ভবতী মহিলাদের এবং প্রবীণদের জন্য দ্রুত-লেন স্লট — সংরক্ষণ করুন</string>
+    <string name="home_event_schedule">ইভেন্ট সময়সূচি</string>
+    <string name="home_event_schedule_desc">ইভেন্ট সময়, স্থান দেখুন এবং রিমাইন্ডার সেট করুন</string>
+    <string name="home_emergency_sos">জরুরী SOS</string>
+    <string name="home_tap_for_assistance">তাৎক্ষণিক সহায়তার জন্য ট্যাপ করুন</string>
+    <string name="home_help">সাহায্য</string>
+
+    <string name="sos_title">জরুরী SOS</string>
+    <string name="sos_select_type">জরুরীর ধরণ নির্বাচন করুন:</string>
+    <string name="sos_panic">PANIC - তাত্ক্ষণিক বিপদ</string>
+    <string name="sos_medical">MEDICAL - স্বাস্থ্য জরুরি</string>
+    <string name="sos_security">SECURITY - নিরাপত্তা হুমকি</string>
+    <string name="cancel">বাতিল</string>
+    <string name="panic_sent">Panic SOS পাঠানো হয়েছে</string>
+    <string name="medical_sent">Medical SOS পাঠানো হয়েছে</string>
+    <string name="security_sent">Security SOS পাঠানো হয়েছে</string>
+</resources>

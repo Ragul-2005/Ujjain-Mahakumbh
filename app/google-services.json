@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "546241349475",
+    "project_id": "crowdguard-b009f",
+    "storage_bucket": "crowdguard-b009f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:546241349475:android:c32bf5f8df6c18ec1e3556",
+        "android_client_info": {
+          "package_name": "com.mahakumbh.crowdsafety"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyyTZfU9pP-k0ihYevf_ik5upEpWt4-2c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

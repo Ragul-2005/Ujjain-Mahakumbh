@@ -1,0 +1,116 @@
+from flask import Flask, Response, render_template_string
+import cv2
+from ultralytics import YOLO
+import threading
+
+# Load YOLOv8 model (Nano for speed on Raspberry Pi)
+print("Loading YOLOv8 model...")
+model = YOLO("yolov8n.pt")
+
+app = Flask(__name__)
+
+# Camera mapping (from v4l2-ctl output)
+CAM_SOURCES = {
+    "zone_a": 0,  # Lenovo FHD Webcam
+    "zone_b": 2,  # W100
+    "zone_c": 4   # FINGERS HD Webcam
+}
+
+# Store camera threads
+caps = {}
+
+def open_camera(zone, cam_index):
+    cap = cv2.VideoCapture(cam_index)
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+    cap.set(cv2.CAP_PROP_FPS, 15)
+
+    if not cap.isOpened():
+        print(f"[ERROR] Could not open camera {cam_index} ({zone})")
+    else:
+        print(f"✅ Camera for {zone} opened (device={cam_index})")
+
+    caps[zone] = cap
+
+# Start threads for each camera
+def start_cameras():
+    print("Starting camera threads for zones:", CAM_SOURCES)
+    for zone, cam_index in CAM_SOURCES.items():
+        threading.Thread(target=open_camera, args=(zone, cam_index), daemon=True).start()
+
+# HTML template
+HTML_TEMPLATE = """
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multi-Zone Person Detection</title>
+    <style>
+        body { font-family: Arial; text-align: center; background: #f4f4f4; }
+        h1 { margin: 20px; }
+        button { padding: 10px 20px; margin: 10px; font-size: 18px; }
+        img { border: 3px solid black; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Multi-Zone Person Detection</h1>
+    <div>
+        <button onclick="changeZone('zone_a')">Zone A</button>
+        <button onclick="changeZone('zone_b')">Zone B</button>
+        <button onclick="changeZone('zone_c')">Zone C</button>
+    </div>
+    <div>
+        <img id="video" src="/video_feed/zone_a" width="720" height="480">
+    </div>
+    <script>
+        function changeZone(zone) {
+            document.getElementById('video').src = '/video_feed/' + zone;
+        }
+    </script>
+</body>
+</html>
+"""
+
+@app.route("/")
+def index():
+    return render_template_string(HTML_TEMPLATE)
+
+def generate_frames(zone):
+    cap = caps.get(zone, None)
+    if cap is None or not cap.isOpened():
+        print(f"[ERROR] Camera for {zone} not found or failed to open.")
+        return
+
+    while True:
+        success, frame = cap.read()
+        if not success:
+            print(f"[WARNING] Empty frame from {zone}")
+            break
+
+        # Run YOLOv8 inference (detect only persons)
+        results = model(frame, classes=[0])  # class 0 = person
+
+        # Draw boxes and count persons
+        annotated_frame = results[0].plot()
+        person_count = len(results[0].boxes)
+
+        # Add overlay text
+        cv2.putText(annotated_frame, f"Persons: {person_count}",
+                    (10, 40), cv2.FONT_HERSHEY_SIMPLEX,
+                    1, (0, 255, 0), 2)
+
+        # Encode to JPEG
+        ret, buffer = cv2.imencode('.jpg', annotated_frame)
+        frame_bytes = buffer.tobytes()
+
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
+
+@app.route("/video_feed/<zone>")
+def video_feed(zone):
+    return Response(generate_frames(zone),
+                    mimetype="multipart/x-mixed-replace; boundary=frame")
+
+if __name__ == "__main__":
+    start_cameras()
+    print("Flask server running at http://0.0.0.0:5000")
+    app.run(host="0.0.0.0", port=5000, threaded=True)
